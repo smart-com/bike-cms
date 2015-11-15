@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-11-11 15:42:06
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-11-15 16:08:01
          compiled from "D:\Yandex.Disk\Projects\bikecms\templates\articles.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_5643379eb8d3b8_49142713',
+  'unifunc' => 'content_564883b2040408_03611488',
   'file_dependency' => 
   array (
     'd518e45e962d663c42545db925b02cfb9c96c142' => 
     array (
       0 => 'D:\\Yandex.Disk\\Projects\\bikecms\\templates\\articles.tpl',
-      1 => 1447236155,
+      1 => 1447592879,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_5643379eb8d3b8_49142713')) {
-function content_5643379eb8d3b8_49142713 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_564883b2040408_03611488')) {
+function content_564883b2040408_03611488 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'D:/Yandex.Disk/Projects/bikecms/smarty/libs/plugins\\function.html_options.php';
 ?>
 <!DOCTYPE html>
@@ -42,6 +42,7 @@ if (!is_callable('smarty_function_html_options')) require_once 'D:/Yandex.Disk/P
 				<tr>
 					<th>id</th>
 					<th>Name</th>
+					<th>Content</th>
 					<th>Date</th>
 					<th>Category</th>
 					<th>Author</th>
@@ -62,13 +63,16 @@ $__foreach_a_0_saved_local_item = $_smarty_tpl->tpl_vars['a'];
 				<tr>
 					<td><?php echo $_smarty_tpl->tpl_vars['a']->value->id;?>
 </td>
-					<td><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['a']->value->name, ENT_QUOTES, 'UTF-8', true);?>
+					<td><?php ob_start();
+echo htmlspecialchars($_smarty_tpl->tpl_vars['a']->value->name, ENT_QUOTES, 'UTF-8', true);
+$_tmp1=ob_get_clean();
+echo $_tmp1;?>
 </td>
-					<td><?php echo $_smarty_tpl->tpl_vars['a']->value->pubdate->format('d.m.Y');?>
+					<td><?php echo $_smarty_tpl->tpl_vars['a']->value->content;?>
+</td>
+					<td><?php echo $_smarty_tpl->tpl_vars['a']->value->pubdate;?>
 </td>
 					<td><?php echo $_smarty_tpl->tpl_vars['a']->value->category;?>
-</td>
-					<td><?php echo $_smarty_tpl->tpl_vars['a']->value->author;?>
 </td>
 					<td><?php
 $_from = $_smarty_tpl->tpl_vars['a']->value->authors;

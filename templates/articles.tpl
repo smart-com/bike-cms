@@ -16,6 +16,7 @@
 				<tr>
 					<th>id</th>
 					<th>Name</th>
+					<th>Content</th>
 					<th>Date</th>
 					<th>Category</th>
 					<th>Author</th>
@@ -24,10 +25,10 @@
 			{foreach from=$articles item=$a}
 				<tr>
 					<td>{$a->id}</td>
-					<td>{$a->name|escape}</td>
-					<td>{$a->pubdate->format('d.m.Y')}</td>
+					<td>{{$a->name|escape}}</td>
+					<td>{$a->content}</td>
+					<td>{$a->pubdate}</td>
 					<td>{$a->category}</td>
-					<td>{$a->author}</td>
 					<td>{foreach from=$a->authors item=$a}{$a}<br />{/foreach}</td>
 				</tr>
 			{/foreach}
