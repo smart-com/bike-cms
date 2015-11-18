@@ -49,7 +49,7 @@
 			$res		 = $conn->query( $q );
 			$articles	 = array();
 
-			while( $article = $res->fetch_row() ) {
+			while( $article = $res->fetch() ) {
 				$id = $article[ 0 ];
 
 				if( isset( $articles[ $id ] ) && isset( $auth ) ) {

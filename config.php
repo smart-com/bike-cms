@@ -4,6 +4,7 @@
 	define( 'DB_USER', 'root' );
 	define( 'DB_PASSWORD', '' );
 	define( 'DB_HOST', 'localhost' );
+	define( 'CHARSET', 'utf8');
 
 	define( 'DIR_BASE', __ROOT__ . '/' );
 	define( 'DIR_MODEL', DIR_BASE . 'models/' );

@@ -12,7 +12,7 @@
 			$q	 = "Select " . implode( ',', $fields ) . " From $tbl";
 			$res = $conn->query( $q );
 			$ret = array();
-			while( $r	 = $res->fetch_row() ) {
+			while( $r	 = $res->fetch() ) {
 				$obj			 = NULL;
 				eval( $eval );
 				$ret[ $r[ 0 ] ]	 = $obj;
