@@ -14,7 +14,7 @@
 
 	define( 'DEFAULT_CTRL', 'Article' );
 	define( 'DEFAULT_ACTION', 'Index' );
-
 	define( 'DEFAULT_LAYOUT', 'layout.tpl' );
+
 	define( 'CONTENT_TPL_VAR', 'content_tpl' );
 
