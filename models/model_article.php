@@ -36,11 +36,11 @@
 			}
 		}
 
-		public static function Find( $conn, $authID = NULL, $catId = NULL ) {
+		public static function Find( $conn, $authId = NULL, $catId = NULL ) {
 			$q = "Select Articles.ID, Articles.Name, Articles.Content, Articles.PubDate, Category.ID, Category.Name, Authors.ID, Authors.Name From Category, Articles Left Outer Join ArtAuth On ArtAuth.ID_Article = Articles.ID Left Outer Join ArtCat On ArtCat.ID_Article = Articles.ID Left Outer Join Authors On Authors.ID = ArtAuth.ID_Author Where ArtAuth.ID_Author = Authors.ID and ArtCat.ID_Category = Category.ID";
 
-			if( isset( $authID ) && $authID >= 0 ) {
-				$q = $q . " And Authors.ID = $authID";
+			if( isset( $authId ) && $authId >= 0 ) {
+				$q = $q . " And Authors.ID = $authId";
 			}
 			if( isset( $catId ) && $catId >= 0 ) {
 				$q = $q . " And Category.ID = $catId";
@@ -50,10 +50,16 @@
 			$articles	 = array();
 
 			while( $article = $res->fetch() ) {
+
+				$id		 = $article[ 0 ];
+				$auth	 = NULL;
+				if( isset( $article[ 6 ] ) ) {
+					$auth = new Author( $article[ 6 ], $article[ 7 ] );
+				}
 				$id = $article[ 0 ];
 
 				if( isset( $articles[ $id ] ) && isset( $auth ) ) {
-					$arr						 = $article[ $id ]->authors;
+					$arr						 = $articles[ $id ]->authors;
 					$arr[]						 = $auth;
 					$articles[ $id ]->authors	 = $arr;
 				}
@@ -68,3 +74,4 @@
 		}
 
 	}
+

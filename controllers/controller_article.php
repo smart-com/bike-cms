@@ -11,10 +11,10 @@
 
 			$this->view->Show( 'articles.tpl',
 					  array(
-				'articles'	 => Article::Find( $this->conn, $params[ 'authID' ],
+				'articles'	 => Article::Find( $this->conn, $params[ 'authId' ],
 								  $params[ 'catId' ] ),
 				'authors'	 => array( -1 => '- Все -' ) + Author::GetAll( $this->conn ),
-				'authID'	 => $params[ 'authID' ],
+				'authId'	 => $params[ 'authId' ],
 				'cats'		 => array( -1 => '- Все -' ) + Category::GetAll( $this->conn ),
 				'catId'		 => $params[ 'catId' ]
 					)
