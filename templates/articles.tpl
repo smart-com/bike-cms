@@ -14,7 +14,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>id</th>
+					<th>ID</th>
 					<th>Name</th>
 					<th>Content</th>
 					<th>Date</th>

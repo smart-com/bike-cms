@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-11-16 20:46:40
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-11-21 02:52:35
          compiled from "D:\Yandex.Disk\Projects\bikecms\templates\articles.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_564a1680849f18_36761732',
+  'unifunc' => 'content_564fb243415238_23685424',
   'file_dependency' => 
   array (
     'd518e45e962d663c42545db925b02cfb9c96c142' => 
     array (
       0 => 'D:\\Yandex.Disk\\Projects\\bikecms\\templates\\articles.tpl',
-      1 => 1447695982,
+      1 => 1448063553,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_564a1680849f18_36761732')) {
-function content_564a1680849f18_36761732 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_564fb243415238_23685424')) {
+function content_564fb243415238_23685424 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'D:/Yandex.Disk/Projects/bikecms/smarty/libs/plugins\\function.html_options.php';
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ if (!is_callable('smarty_function_html_options')) require_once 'D:/Yandex.Disk/P
 		<table>
 			<thead>
 				<tr>
-					<th>id</th>
+					<th>ID</th>
 					<th>Name</th>
 					<th>Content</th>
 					<th>Date</th>
