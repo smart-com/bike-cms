@@ -1,20 +1,24 @@
 <?php
 
-	define( 'DB_NAME', 'BIKECMS' );
-	define( 'DB_USER', 'root' );
-	define( 'DB_PASSWORD', '' );
-	define( 'DB_HOST', 'localhost' );
-	define( 'CHARSET', 'utf8');
+	/**
+	 * Если я могу определить константы так,
+	 * то зачем мне вызывать функцию???
+	 */
 
-	define( 'DIR_BASE', __ROOT__ . '/' );
-	define( 'DIR_MODEL', DIR_BASE . 'models/' );
-	define( 'DIR_CTRL', DIR_BASE . 'controllers/' );
-	define( 'DIR_VIEW', DIR_BASE . 'templates/' );
+	const DB_NAME = 'BIKECMS';
+	const DB_USER = 'root';
+	const DB_PASSWORD = '';
+	const DB_HOST = 'localhost';
+	const CHARSET = 'utf8';
 
+	const DIR_BASE = __ROOT__ . '/';
+	const DIR_MODEL = DIR_BASE . 'models/';
+	const DIR_CTRL = DIR_BASE . 'controllers/';
+	const DIR_VIEW = DIR_BASE . 'templates/';
 
-	define( 'DEFAULT_CTRL', 'Article' );
-	define( 'DEFAULT_ACTION', 'Index' );
-	define( 'DEFAULT_LAYOUT', 'layout.tpl' );
+	const DEFAULT_CTRL = 'Article';
+	const DEFAULT_ACTION = 'Index';
+	const DEFAULT_LAYOUT = 'layout.tpl';
 
-	define( 'CONTENT_TPL_VAR', 'content_tpl' );
+	const CONTENT_TPL_VAR = 'content_tpl';
 
