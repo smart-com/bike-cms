@@ -8,6 +8,7 @@
 		<form method="get" action="/Article/Index">
 			{html_options name="catId" options=$cats selected=$catId}
 			{html_options name="authId" options=$authors selected=$authId}
+			{html_options name="pubDate" options=$pubDates selected=$pubdate}
 			<input type="submit" value="Refresh">
 		</form>
 

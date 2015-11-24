@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-11-22 16:56:38
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-11-24 18:53:25
          compiled from "D:\Yandex.Disk\Projects\bikecms\templates\articles.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_5651c99642ba62_98705118',
+  'unifunc' => 'content_565487f5569e22_53502374',
   'file_dependency' => 
   array (
     'd518e45e962d663c42545db925b02cfb9c96c142' => 
     array (
       0 => 'D:\\Yandex.Disk\\Projects\\bikecms\\templates\\articles.tpl',
-      1 => 1448200276,
+      1 => 1448380401,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_5651c99642ba62_98705118')) {
-function content_5651c99642ba62_98705118 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_565487f5569e22_53502374')) {
+function content_565487f5569e22_53502374 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'D:/Yandex.Disk/Projects/bikecms/smarty/libs/plugins\\function.html_options.php';
 ?>
 <!DOCTYPE html>
@@ -33,6 +33,8 @@ if (!is_callable('smarty_function_html_options')) require_once 'D:/Yandex.Disk/P
 			<?php echo smarty_function_html_options(array('name'=>"catId",'options'=>$_smarty_tpl->tpl_vars['cats']->value,'selected'=>$_smarty_tpl->tpl_vars['catId']->value),$_smarty_tpl);?>
 
 			<?php echo smarty_function_html_options(array('name'=>"authId",'options'=>$_smarty_tpl->tpl_vars['authors']->value,'selected'=>$_smarty_tpl->tpl_vars['authId']->value),$_smarty_tpl);?>
+
+			<?php echo smarty_function_html_options(array('name'=>"pubDate",'options'=>$_smarty_tpl->tpl_vars['pubDates']->value,'selected'=>$_smarty_tpl->tpl_vars['pubdate']->value),$_smarty_tpl);?>
 
 			<input type="submit" value="Refresh">
 		</form>

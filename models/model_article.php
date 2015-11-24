@@ -19,6 +19,10 @@
 			return $ret;
 		}
 
+		public function __toString() {
+			return $this->name;
+		}
+
 		public function __get( $name ) {
 			return $this->data[ $name ];
 		}
@@ -36,7 +40,8 @@
 			}
 		}
 
-		public static function Find( $conn, $authId = NULL, $catId = NULL ) {
+		public static function Find( $conn, $authId = NULL, $catId = NULL,
+							   $pubDate = NULL ) {
 			$q = "Select Articles.ID, Articles.Name, Articles.Content, Articles.PubDate, Category.ID, Category.Name, Authors.ID, Authors.Name From Category, Articles Left Outer Join ArtAuth On ArtAuth.ID_Article = Articles.ID Left Outer Join ArtCat On ArtCat.ID_Article = Articles.ID Left Outer Join Authors On Authors.ID = ArtAuth.ID_Author Where ArtAuth.ID_Author = Authors.ID and ArtCat.ID_Category = Category.ID";
 
 			if( isset( $authId ) && $authId >= 0 ) {
@@ -44,6 +49,15 @@
 			}
 			if( isset( $catId ) && $catId >= 0 ) {
 				$q = $q . " And Category.ID = $catId";
+			}
+			if( isset( $pubDate ) ) {
+
+				if( $pubDate == -2 ) {
+					$q = $q . " And TO_DAYS(NOW()) - TO_DAYS(Articles.PubDate) <= 7";
+				}
+				elseif($pubDate == -3) {
+					$q = $q . " And TO_DAYS(NOW()) - TO_DAYS(Articles.PubDate) <= 365";
+				}
 			}
 
 			$res		 = $conn->query( $q );
@@ -74,4 +88,4 @@
 		}
 
 	}
-
+	
