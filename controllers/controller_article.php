@@ -17,10 +17,27 @@
 				'authId'	 => $params[ 'authId' ],
 				'cats'		 => array( -1 => '- Все -' ) + Category::GetAll( $this->conn ),
 				'catId'		 => $params[ 'catId' ],
-				'pubDates'	 => array( -1 => '- Все -', -2 => 'За эту неделю', -3 => 'За этот год'),
+				'pubDates'	 => array( -1 => '- Все -', -2 => 'За эту неделю', -3 => 'За этот год' ),
 				'pubDate '	 => $params[ 'pubDate' ]
 					)
 			);
+		}
+
+		/**
+		 * Если форма
+		 *
+		 *
+		 * @param array $params Переменные из $_POST
+		 */
+		public function Add( $params ) {
+
+			if(!$params['content'] || !$params['name']) {
+				$this->view->Show( 'edit_article.tpl' );
+			}
+			else {
+				Article::EditArticle( $params );
+				$this->view->Show( 'success.tpl' );
+			}
 		}
 
 		public function Delete( $params ) {

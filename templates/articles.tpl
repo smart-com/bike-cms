@@ -5,7 +5,7 @@
 		<title></title>
 	</head>
 	<body>
-		<form method="get" action="/Article/Index">
+		<form method="post" action="/Article/Index">
 			{html_options name="catId" options=$cats selected=$catId}
 			{html_options name="authId" options=$authors selected=$authId}
 			{html_options name="pubDate" options=$pubDates selected=$pubdate}
@@ -34,5 +34,10 @@
 				</tr>
 			{/foreach}
 		</table>
+
+		{* Форма передается post, чтобы не дублировался адрес в строке браузера*}
+		<form method="post" action="/Article/Add">
+			<input type="submit" method="post" name="Article" value="Add">
+		</form>
 	</body>
 </html>

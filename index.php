@@ -12,8 +12,8 @@
 
 	$controller	 = $router->Controller();
 	$ctrl_class	 = $router->CtrlClass();
-	$action = $router->Action();
-	$params = $router->Params();
+	$action		 = $router->Action();
+	$params		 = $router->Params();
 
 	require_once DIR_CTRL . $controller;
 
