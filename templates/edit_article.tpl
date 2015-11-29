@@ -6,6 +6,8 @@
 	</head>
 	<body>
 		<form method="post" action="/Article/Add">
+			{html_options name="catId" options=$cats selected=$catId}
+			{html_options name="authId" options=$authors selected=$authId}
 		<table>
 				<thead>
 					<tr>

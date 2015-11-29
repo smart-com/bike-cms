@@ -96,8 +96,27 @@
 			}
 		}
 
-		public function EditArticle( $params ) {
-			print_r( $params );
+		/**
+		 * Добавляет статью в базу данных
+		 *
+		 * @param reference $conn Соединение с БД
+		 * @param int $authId Идентификатор автора статьи
+		 * @param int $catId Идентификатор категории
+		 * @param datetime $pubDate Дата публикации статьи
+		 */
+		public function EditArticle( $conn, $authId = NULL, $catId = NULL,
+							   $pubDate = NULL ) {
+			/** @var reference Запрос на вставку данных в базу данных */
+			$q = "INSERT INTO Articles (Name, Content, Pubdate) VALUES ('Fourth Insert', 'Fourth Content', CURRENT_TIMESTAMP)";
+
+			/** @var reference Запрос в базу данных */
+			/*Model::Insert( $conn, " `Articles` ",
+					array("(`Name`", "`Content`", "`PubDate`) "),
+					array( "('Fifth Insertion'", " 'Fifth Content'", ' CURRENT_TIMESTAMP)' ),' Article' );*/
+
+			/** @var reference Выполнение запроса в базу данных */
+			// "UPDATE ArtAuth SET ArtAuth.ID_Article = Articles.ID WHERE Authors.ID = Authors.Name";
+			//$q = "UPDATE ArtAuth SET ArtAuth.ID_Article = Articles.ID WHERE Authors.ID = Authors.Name";
 		}
 
 		/**
