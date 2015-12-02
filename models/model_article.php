@@ -1,12 +1,13 @@
 <?php
 
+	require_once 'model.php';
 	require_once 'model_author.php';
 	require_once 'model_category.php';
 
 	/**
 	 * Класс для обработки статей
 	 */
-	class Article {
+	class Article extends Model {
 
 		/**
 		 * @var object Объект статьи
@@ -106,17 +107,17 @@
 		 */
 		public function EditArticle( $conn, $authId = NULL, $catId = NULL,
 							   $pubDate = NULL ) {
-			/** @var reference Запрос на вставку данных в базу данных */
-			$q = "INSERT INTO Articles (Name, Content, Pubdate) VALUES ('Fourth Insert', 'Fourth Content', CURRENT_TIMESTAMP)";
 
-			/** @var reference Запрос в базу данных */
-			/*Model::Insert( $conn, " `Articles` ",
-					array("(`Name`", "`Content`", "`PubDate`) "),
-					array( "('Fifth Insertion'", " 'Fifth Content'", ' CURRENT_TIMESTAMP)' ),' Article' );*/
+			$allowed = array( "name", "content", "pubdate" ); // allowed fields
+			//$dir	 = "CURRENT_TIMESTAMP";
+			//$key = array_search($_GET[ 'dir' ], $dirs));
+			//$dir	 = $orders[ $key ];
+			//$sql	 = "SELECT * FROM `table` ORDER BY $field $dir";
 
-			/** @var reference Выполнение запроса в базу данных */
-			// "UPDATE ArtAuth SET ArtAuth.ID_Article = Articles.ID WHERE Authors.ID = Authors.Name";
-			//$q = "UPDATE ArtAuth SET ArtAuth.ID_Article = Articles.ID WHERE Authors.ID = Authors.Name";
+			print_r( $allowed[ 'pubdate' ] );
+			$sql = "INSERT INTO Articles SET " . Model::pdoSet( $allowed, $values );
+			$stm = $conn->prepare( $sql );
+			$stm->execute( $values );
 		}
 
 		/**

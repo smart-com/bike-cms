@@ -20,29 +20,23 @@
 			return $ret;
 		}
 
-		protected static function Insert( $conn, $tbl, $fields, $values, $class ) {
-			$prm = '';
-			for( $i = 0; $i < count( $fields ); $i++ ) {
-				$prm = $prm . (empty( $prm ) ? '' : ',') . '$r[' . $i . ']';
+		protected function pdoSet( $allowed, &$values, $source = array() ) {
+			$set	 = '';
+			$values	 = array();
+			if( !$source ) {
+				$source = &$_POST;
 			}
 
-			$eval = '$obj=new ' . "$class($prm);";
-
-			$q	 = "INSERT INTO $tbl " . implode( ',', $fields ) . 'VALUES ' . implode( ',', $values );
-
-			$conn->query( $q );
-		}
-
-		protected static function Update( $conn, $tbl, $fields, $values, $class ) {
-			$prm = '';
-			for( $i = 0; $i < count( $fields ); $i++ ) {
-				$prm = $prm . (empty( $prm ) ? '' : ',') . '$r[' . $i . ']';
+			foreach( $allowed as $field ) {
+				if( isset( $source[ $field ]) ) {
+					if($field == 'pubdate' && $source[$field] === '') {
+						$source[$field] = (string)date_create()->format('Y-m-d');
+					}
+					$set.="`" . str_replace( "`", "``", $field ) . "`" . "=:$field, ";
+					$values[ $field ] = $source[ $field ];
+				}
 			}
-			$eval = '$obj=new ' . "$class($prm);";
 
-			$q	 = "UPDATE $tbl SET " . implode( ',', $fields ) . 'VALUES ' . implode( ',', $values );
-
-			$conn->query( $q );
+			return substr( $set, 0, -2 );
 		}
-
 	}
