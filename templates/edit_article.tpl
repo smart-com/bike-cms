@@ -6,12 +6,9 @@
 	</head>
 	<body>
 		<form method="post" action="/Article/Add">
-			{html_options name="catId" options=$cats selected=$catId}
-			{html_options name="authId" options=$authors selected=$authId}
 		<table>
 				<thead>
 					<tr>
-						<th>ID</th>
 						<th>Name</th>
 						<th>Content</th>
 						<th>Date</th>
@@ -20,7 +17,6 @@
 					</tr>
 				</thead>
 					<tr>
-						<td>ID</td>
 						<td>
 							<input type="text" name="name">
 						</td>
@@ -31,11 +27,10 @@
 							<input type="date" name="pubdate">
 						</td>
 						<td>
-						<td>
-							<input type="text" name="category">
+							{html_options name="catId" options=$cats selected=$catId}
 						</td>
 						<td>
-							<input type="text" name="author">
+							{html_options name="authId" options=$authors selected=$authId}
 						</td>
 					</tr>
 					<tr>

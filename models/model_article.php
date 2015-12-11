@@ -97,6 +97,36 @@
 			}
 		}
 
+		public static function UpdateLinks( $conn, $params, $authId = NULL,
+									  $catId = NULL, $pubDate = NULL, $art_id = NULL ) {
+
+			/** Достаем идентификатор статьи из базы данных */
+			$allowed = array( "name" );
+
+			$sql = "SELECT ID FROM Articles WHERE " . Model::pdoSet( $allowed, $values );
+			$stm = $conn->prepare( $sql );
+			$stm->execute( $values );
+
+			$art_id	 = $stm->fetchColumn();
+
+			/** Обновляем связь с категориями */
+			$allowed = array( "ID_Article", "ID_Category" ); // allowed fields
+			$source	 = array( "ID_Article" => ( int ) $art_id, "ID_Category" => ( int ) $params[ 'catId' ] );
+
+			$sql = "INSERT INTO `ArtCat` SET " . Model::pdoSet( $allowed, $values, $source );
+			$stm = $conn->prepare( $sql );
+			$stm->execute( $source );
+
+			/** Обновляем связь с автором */
+			$allowed = array( "ID_Article", "ID_Author" ); // allowed fields
+			$source	 = array( "ID_Article" => ( int ) $art_id, "ID_Author" => ( int ) $params[ 'authId' ] );
+
+			$sql = "INSERT INTO `ArtAuth` SET " . Model::pdoSet( $allowed, $values, $source );
+			$stm = $conn->prepare( $sql );
+
+			$stm->execute( $source );
+		}
+
 		/**
 		 * Добавляет статью в базу данных
 		 *
@@ -105,19 +135,14 @@
 		 * @param int $catId Идентификатор категории
 		 * @param datetime $pubDate Дата публикации статьи
 		 */
-		public function EditArticle( $conn, $authId = NULL, $catId = NULL,
+		public function EditArticle( $conn, $params, $authId = NULL, $catId = NULL,
 							   $pubDate = NULL ) {
 
-			$allowed = array( "name", "content", "pubdate" ); // allowed fields
-			//$dir	 = "CURRENT_TIMESTAMP";
-			//$key = array_search($_GET[ 'dir' ], $dirs));
-			//$dir	 = $orders[ $key ];
-			//$sql	 = "SELECT * FROM `table` ORDER BY $field $dir";
-
-			print_r( $allowed[ 'pubdate' ] );
-			$sql = "INSERT INTO Articles SET " . Model::pdoSet( $allowed, $values );
-			$stm = $conn->prepare( $sql );
+			$allowed = array( "name", "content", "pubdate" );
+			$sql	 = "INSERT INTO Articles SET " . Model::pdoSet( $allowed, $values );
+			$stm	 = $conn->prepare( $sql );
 			$stm->execute( $values );
+			Article::UpdateLinks( $conn, $params );
 		}
 
 		/**

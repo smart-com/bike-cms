@@ -19,4 +19,8 @@
 			return Model::Select( $conn, 'Category', array( 'ID', 'Name' ), 'Category' );
 		}
 
+		public static function GetCategory( $conn, $cat_id ) {
+			return Model::Select( $conn, 'Category', array( 'ID', $cat_id ), 'Category' );
+		}
+
 	}
